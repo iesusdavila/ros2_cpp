@@ -9,10 +9,10 @@
 using namespace std::chrono_literals;
 
 // El publicador siempre hereda del rclcpp::Node
-class MinimalPublisher : public rclcpp::Node
-{
+class MinimalPublisher : public rclcpp::Node{
   // Todo lo referente a this hace referencia al nodo
   public:
+    // Creador de un publicador
     MinimalPublisher() : Node("minimal_publisher"), count_(0){
       publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
       // Se publicara cada 2 veces por segundo (500ms = 0.5s => f=1/T=1/0.5=2)
@@ -34,8 +34,7 @@ class MinimalPublisher : public rclcpp::Node
     size_t count_;
 };
 
-int main(int argc, char * argv[])
-{
+int main(int argc, char * argv[]){
   rclcpp::init(argc, argv);
   rclcpp::spin(std::make_shared<MinimalPublisher>());
   rclcpp::shutdown();
