@@ -17,6 +17,7 @@ class MinimalPublisher : public rclcpp::Node{
       publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
       // Se publicara cada 2 veces por segundo (500ms = 0.5s => f=1/T=1/0.5=2)
       timer_ = this->create_wall_timer(500ms, std::bind(&MinimalPublisher::timer_callback, this));
+      RCLCPP_INFO(this->get_logger(), "Nodo publicador inicializado correctamente");      
     }
 
   private:
