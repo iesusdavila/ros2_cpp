@@ -13,15 +13,23 @@ find_package(std_msgs REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(talker src/basic_publisher.cpp)
+add_executable(talker src/topics/basic_publisher.cpp)
 ament_target_dependencies(talker rclcpp std_msgs)
 
-add_executable(listener src/basic_suscriber.cpp)
+add_executable(listener src/topics/basic_suscriber.cpp)
 ament_target_dependencies(listener rclcpp std_msgs)
+
+add_executable(numero src/topics/examples/pub_numero.cpp)
+ament_target_dependencies(numero rclcpp std_msgs)
+
+add_executable(contador_ps src/topics/examples/cont_num.cpp)
+ament_target_dependencies(contador_ps rclcpp std_msgs)
 
 install(TARGETS
   talker
   listener
+  numero
+  contador_ps
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
