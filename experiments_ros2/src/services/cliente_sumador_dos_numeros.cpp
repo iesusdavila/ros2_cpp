@@ -22,7 +22,6 @@ class ClienteSumaNode : public rclcpp::Node {
             try{
                 auto response = future.get();
                 RCLCPP_INFO(this->get_logger(), "%d + %d = %d", a, b, (int)response->sum);               
-
             }catch(const std::exception& e){
                 RCLCPP_INFO(this->get_logger(), "Llamada al servidor fallida");               
             }            
