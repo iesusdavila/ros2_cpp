@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(example_interfaces REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -25,11 +26,15 @@ ament_target_dependencies(numero rclcpp std_msgs)
 add_executable(contador_ps src/topics/examples/cont_num.cpp)
 ament_target_dependencies(contador_ps rclcpp std_msgs)
 
+add_executable(servidor_suma src/services/servidor_suma_dos_numeros.cpp)
+ament_target_dependencies(servidor_suma rclcpp example_interfaces)
+
 install(TARGETS
   talker
   listener
   numero
   contador_ps
+  servidor_suma
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
