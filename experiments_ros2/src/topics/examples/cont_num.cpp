@@ -12,13 +12,15 @@ class SubscriberNode : public rclcpp::Node {
     private:
         void callback(const std_msgs::msg::Int32::SharedPtr msg) {
             auto sum_msg = std::make_unique<std_msgs::msg::Int32>();
-            sum_msg->data = msg->data + 2;
-            RCLCPP_INFO(this->get_logger(), "Received: %d, Publishing Sum: %d", msg->data, sum_msg->data);
+            contador_ = contador_ + msg->data;
+            sum_msg->data = contador_;
+            RCLCPP_INFO(this->get_logger(), "Publicando contador... %d", sum_msg->data);
             publisher_->publish(std::move(sum_msg));
         }
 
         rclcpp::Subscription<std_msgs::msg::Int32>::SharedPtr subscription_;
         rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr publisher_;
+        int contador_ = 0;
 };
 
 int main(int argc, char** argv) {

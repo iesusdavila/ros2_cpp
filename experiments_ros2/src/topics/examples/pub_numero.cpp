@@ -14,12 +14,11 @@ class PublisherNode : public rclcpp::Node {
             msg->data = number_;
             RCLCPP_INFO(this->get_logger(), "Publishing: %d", msg->data);
             publisher_->publish(std::move(msg));
-            ++number_;
         }
 
         rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr publisher_;
         rclcpp::TimerBase::SharedPtr timer_;
-        int number_ = 1;
+        int number_ = 3;
 };
 
 int main(int argc, char** argv) {
