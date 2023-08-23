@@ -15,8 +15,7 @@ class ServidorSumaNode : public rclcpp::Node {
         void callbackSumadorDosNumeros(const example_interfaces::srv::AddTwoInts::Request::SharedPtr request,
                                        const example_interfaces::srv::AddTwoInts::Response::SharedPtr response){
             response->sum=request->a + request->b;
-            RCLCPP_INFO(this->get_logger(), request->a + " + " + request->b);   
-            RCLCPP_INFO(this->get_logger(), "La suma es " + response->sum);   
+            RCLCPP_INFO(this->get_logger(), "%d + %d = %d", (int)request->a, (int)request->b, (int)response->sum);   
         }
 
         rclcpp::Service<example_interfaces::srv::AddTwoInts>::SharedPtr server_;
