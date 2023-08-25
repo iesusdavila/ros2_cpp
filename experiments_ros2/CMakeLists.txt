@@ -23,8 +23,8 @@ ament_target_dependencies(listener rclcpp std_msgs)
 add_executable(numero src/topics/examples/pub_numero.cpp)
 ament_target_dependencies(numero rclcpp std_msgs)
 
-add_executable(contador_ps src/topics/examples/cont_num.cpp)
-ament_target_dependencies(contador_ps rclcpp std_msgs)
+#add_executable(contador_ps src/topics/examples/cont_num.cpp)
+#ament_target_dependencies(contador_ps rclcpp std_msgs)
 
 add_executable(servidor_suma src/services/servidor_suma_dos_numeros.cpp)
 ament_target_dependencies(servidor_suma rclcpp example_interfaces)
@@ -39,7 +39,7 @@ install(TARGETS
   talker
   listener
   numero
-  contador_ps
+  #contador_ps
   servidor_suma
   cliente_suma
   servidor_reset_cont
