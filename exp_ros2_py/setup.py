@@ -20,11 +20,12 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'nodo_prueba = ros2_experimentos.nodo_prueba:main',
-            'publicador = ros2_experimentos.pub_mensaje:main',
-            'suscriptor = ros2_experimentos.sub_mensaje:main',
-            'servidor = ros2_experimentos.srv_servidor:main',
-            'cliente = ros2_experimentos.srv_cliente:main',
+            'nodo_prueba = exp_ros2_py.nodo_prueba:main',
+            'publicador = exp_ros2_py.pub_mensaje:main',
+            'suscriptor = exp_ros2_py.sub_mensaje:main',
+            'servidor = exp_ros2_py.srv_servidor:main',
+            'cliente = exp_ros2_py.srv_cliente:main',
+            'publicador_msg_custom = exp_ros2_py.pub_msg_custom:main',
         ],
     },
 )
