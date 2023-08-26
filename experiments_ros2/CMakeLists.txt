@@ -10,6 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(example_interfaces REQUIRED)
+find_package(custom_interfaces REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -35,6 +36,9 @@ ament_target_dependencies(cliente_suma rclcpp example_interfaces)
 add_executable(cliente_reset_cont src/services/examples/cliente_reset_contador.cpp)
 ament_target_dependencies(cliente_reset_cont rclcpp example_interfaces)
 
+add_executable(talker_msg_custom src/topics/examples/pub_msg_custom.cpp)
+ament_target_dependencies(talker_msg_custom rclcpp std_msgs custom_interfaces)
+
 install(TARGETS
   talker
   listener
@@ -43,6 +47,7 @@ install(TARGETS
   servidor_suma
   cliente_suma
   cliente_reset_cont
+  talker_msg_custom
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
